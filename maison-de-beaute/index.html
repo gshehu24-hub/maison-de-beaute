@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maison de Beauté | Discover Your Beauty Ritual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- A. NAVIGATION BAR -->
+  <header class="navbar">
+    <a href="#home" class="logo" id="logo" data-target="home">Maison de Beauté</a>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" data-target="home">Home</a></li>
+        <li><a href="#shop" data-target="shop">Shop</a></li>
+        <li><a href="#categories" data-target="categories">Categories</a></li>
+        <li><a href="#about" data-target="about">About Us</a></li>
+        <li><a href="#contact" data-target="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchBtn" aria-label="Search products">&#128269;</button>
+      <button class="icon-btn" id="wishlistBtn" aria-label="Open wishlist">&#9825; <span class="count" id="wishlistCount">0</span></button>
+      <button class="icon-btn" id="cartBtn" aria-label="Open cart">&#128717; <span class="count" id="cartCount">0</span></button>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- B. HERO -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Discover Your Beauty Ritual</h1>
+        <p>Carefully selected perfumes, makeup, skincare and more, chosen to turn everyday self-care into a moment of elegance.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-gold" id="shopNowBtn">Shop Now</button>
+          <button class="btn btn-outline-light" id="exploreBtn">Explore Collection</button>
+        </div>
+        <p class="session-note" id="viewedNote"></p>
+      </div>
+    </section>
+
+    <!-- C. CATEGORIES -->
+    <section class="section" id="categories">
+      <h2>Shop by Category</h2>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <!-- D + E. PRODUCTS, SEARCH AND FILTER -->
+    <section class="section section-tint" id="shop">
+      <h2>Our Products</h2>
+
+      <div class="toolbar">
+        <input type="search" id="searchInput" placeholder="Search by name or brand">
+        <select id="categorySelect" aria-label="Filter by category"></select>
+        <select id="sortSelect" aria-label="Sort by price">
+          <option value="default">Sort: Featured</option>
+          <option value="low">Price: Low to High</option>
+          <option value="high">Price: High to Low</option>
+        </select>
+        <button class="btn btn-dark" id="showAllBtn">Show All</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+      <p class="empty-state" id="noResults" hidden>No products match your search. Try another name, brand or category.</p>
+    </section>
+
+    <!-- I. ABOUT -->
+    <section class="section about" id="about">
+      <h2>About Us</h2>
+      <p>Maison de Beauté is a beauty destination created to celebrate femininity, elegance and self-care. We bring together carefully selected beauty products to help every woman discover her personal beauty ritual.</p>
+    </section>
+
+    <!-- J. CONTACT -->
+    <section class="section section-tint" id="contact">
+      <h2>Contact Us</h2>
+      <form class="contact-form" id="contactForm" novalidate>
+        <label for="fullName">Full name</label>
+        <input type="text" id="fullName">
+        <label for="email">Email</label>
+        <input type="email" id="email">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject">
+        <label for="message">Message</label>
+        <textarea id="message" rows="5"></textarea>
+        <p class="form-message" id="formMessage"></p>
+        <button type="submit" class="btn btn-dark">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- K. FOOTER -->
+  <footer class="footer">
+    <div class="footer-col">
+      <p class="logo">Maison de Beauté</p>
+      <p>Beauty rituals for every woman, from fragrance to skincare.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Navigate</h3>
+      <a href="#home" data-target="home">Home</a>
+      <a href="#shop" data-target="shop">Shop</a>
+      <a href="#categories" data-target="categories">Categories</a>
+      <a href="#about" data-target="about">About Us</a>
+    </div>
+    <div class="footer-col">
+      <h3>Follow us</h3>
+      <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://pinterest.com" target="_blank" rel="noopener">Pinterest</a>
+    </div>
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <p>hello@maisondebeaute.com</p>
+      <p>+355 69 123 4567</p>
+      <p>Tirana, Albania</p>
+    </div>
+    <p class="copyright">&copy; 2026 Maison de Beauté. All rights reserved.</p>
+  </footer>
+
+  <!-- F. PRODUCT DETAILS MODAL -->
+  <div class="modal" id="productModal" hidden>
+    <div class="modal-box">
+      <button class="close-btn" id="closeModal" aria-label="Close details">&times;</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- G. CART PANEL -->
+  <aside class="panel" id="cartPanel" aria-label="Shopping cart">
+    <div class="panel-head">
+      <h3>Your Cart</h3>
+      <button class="close-btn" data-close="cartPanel" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="panel-body" id="cartItems"></div>
+    <div class="panel-foot">
+      <p class="total-row">Total: <strong id="cartTotal">$0.00</strong></p>
+      <button class="btn btn-dark" id="clearCartBtn">Clear Cart</button>
+    </div>
+  </aside>
+
+  <!-- H. WISHLIST PANEL -->
+  <aside class="panel" id="wishlistPanel" aria-label="Wishlist">
+    <div class="panel-head">
+      <h3>Your Wishlist</h3>
+      <button class="close-btn" data-close="wishlistPanel" aria-label="Close wishlist">&times;</button>
+    </div>
+    <div class="panel-body" id="wishlistItems"></div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="toast-area" id="toastArea"></div>
+
+  <!-- Cookie notice -->
+  <div class="cookie-notice" id="cookieNotice" hidden>
+    <p>We use cookies to remember your preferences.</p>
+    <button class="btn btn-gold" id="acceptCookies">Accept</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
